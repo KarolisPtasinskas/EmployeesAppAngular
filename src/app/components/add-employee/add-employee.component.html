@@ -1,0 +1,31 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="lirstName">First name</label>
+    <input
+      type="text"
+      name="firstName"
+      [(ngModel)]="firstName"
+      id="first-name"
+      placeholder="First name"
+    />
+  </div>
+  <div class="form-control">
+    <label for="lastName">Last name</label>
+    <input
+      type="text"
+      name="LastName"
+      [(ngModel)]="lastName"
+      id="last-name"
+      placeholder="Last name"
+    />
+  </div>
+  <div class="form-control">
+    <label for="sex">Enter your sex</label>
+    <select name="sex" [(ngModel)]="sex" id="sex">
+      <option value="0">Male</option>
+      <option value="1">Female</option>
+      <option value="2">Prefer not to say</option>
+    </select>
+  </div>
+  <input type="submit" value="Add employee" class="btn btn-block" />
+</form>
