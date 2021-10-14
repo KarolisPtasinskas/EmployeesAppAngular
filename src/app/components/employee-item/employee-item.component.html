@@ -4,10 +4,13 @@
   </p>
   <p>{{ employee.sex }}</p>
   <p>ID: {{ employee.id }}</p>
-  <button (click)="onDelete(employee)">Remove</button>
+
   <app-button
-    color="lightblue"
+    color="darkcyan"
     text="Edit"
     (click)="onEdit(employee)"
   ></app-button>
+  <app-button color="coral" text="Remove" (click)="onDelete(employee)"
+    >Remove</app-button
+  >
 </div>
