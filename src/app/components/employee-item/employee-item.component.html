@@ -3,5 +3,11 @@
     <strong>{{ employee.firstName }} {{ employee.lastName }}</strong>
   </p>
   <p>{{ employee.sex }}</p>
+  <p>ID: {{ employee.id }}</p>
   <button (click)="onDelete(employee)">Remove</button>
+  <app-button
+    color="lightblue"
+    text="Edit"
+    (click)="onEdit(employee)"
+  ></app-button>
 </div>

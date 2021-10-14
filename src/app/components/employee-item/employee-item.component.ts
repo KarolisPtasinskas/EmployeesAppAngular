@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from '../../Employee';
 
 @Component({
@@ -9,6 +10,7 @@ import { Employee } from '../../Employee';
 export class EmployeeItemComponent implements OnInit {
   @Input() employee!: Employee;
   @Output() onDeleteEmployee: EventEmitter<Employee> = new EventEmitter();
+  @Output() showEditEmployee: EventEmitter<Employee> = new EventEmitter();
 
   constructor() {}
 
@@ -16,5 +18,10 @@ export class EmployeeItemComponent implements OnInit {
 
   onDelete(employee: Employee) {
     this.onDeleteEmployee.emit(employee);
+  }
+
+  onEdit(employee: Employee) {
+    console.log('Employee-item (onEdit): ', employee);
+    this.showEditEmployee.emit(employee);
   }
 }

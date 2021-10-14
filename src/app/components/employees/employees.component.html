@@ -1,6 +1,17 @@
+<app-button
+  color="{{ showAddEmployee ? 'red' : 'green' }}"
+  text="{{ showAddEmployee ? 'Close' : 'Add employee' }}"
+  (btnClick)="toggleAddEmployee()"
+></app-button>
 <app-add-employee (onAddEmployee)="addEmployee($event)"></app-add-employee>
+<app-edit-employee
+  *ngIf="showEdit"
+  [employee]="employeeToEdit"
+  (onEditEmployee)="editEmployee($event)"
+></app-edit-employee>
 <app-employee-item
   *ngFor="let employee of employees"
   [employee]="employee"
   (onDeleteEmployee)="deleteEmployee(employee)"
+  (showEditEmployee)="toggleEditEmployee(employee)"
 ></app-employee-item>

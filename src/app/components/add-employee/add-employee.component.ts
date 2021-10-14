@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Employee } from '../../Employee';
+import { UiService } from '../../services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-employee',
@@ -8,11 +10,18 @@ import { Employee } from '../../Employee';
 })
 export class AddEmployeeComponent implements OnInit {
   @Output() onAddEmployee: EventEmitter<Employee> = new EventEmitter();
-  firstName!: string;
-  lastName!: string;
-  sex: number = 2;
+  firstName: string = '';
+  lastName: string = '';
+  sex: string = 'Unspecified';
 
-  constructor() {}
+  showAddEmployee: boolean = false;
+  subscription: Subscription;
+
+  constructor(private uiService: UiService) {
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showAddEmployee = value));
+  }
 
   ngOnInit(): void {}
 
@@ -23,6 +32,7 @@ export class AddEmployeeComponent implements OnInit {
     }
 
     const newEmployee = {
+      id: undefined,
       firstName: this.firstName,
       lastName: this.lastName,
       sex: this.sex,
@@ -32,6 +42,6 @@ export class AddEmployeeComponent implements OnInit {
 
     this.firstName = '';
     this.lastName = '';
-    this.sex = 2;
+    this.sex = 'Unspecified';
   }
 }
